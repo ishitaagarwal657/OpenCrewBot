@@ -74,3 +74,12 @@
 | Node.js + pnpm | Runtime | Free |
 
 No secrets are committed. All keys live in `.env`.
+
+---
+
+## Live integration check (added after local testing)
+
+| Integration | Status | Evidence |
+|-------------|--------|----------|
+| DeepWiki MCP (https://mcp.deepwiki.com/mcp, no token) | Live connection | Added in Connections, Test returned 3 tools. Agent tool calls under the mock model are not claimed; a real LLM key is needed for autonomous use. |
+| Tavily web search | Live | Confirmed in chat earlier |
