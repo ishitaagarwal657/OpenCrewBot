@@ -1,0 +1,121 @@
+lead_id,lead_date,product_line,channel,city_tier,furthest_stage,converted,revenue_inr,days_to_close
+L048,2026-07-03,Aspirations,Instagram,Tier 2,Paid,Yes,6600,7
+L052,2026-07-03,Aspirations,Instagram,Tier 1,Counselling Call,No,0,
+L026,2026-07-04,Aspirations,School Event,Tier 1,Lead,No,0,
+L102,2026-07-04,Aspirations,Google Ads,Tier 2,Lead,No,0,
+L062,2026-07-05,School Partnerships,Referral,Tier 1,Paid,Yes,245400,105
+L054,2026-07-06,Aspirations,Webinar,Tier 2,Paid,Yes,4300,6
+L001,2026-07-07,Aspirations,Google Ads,Tier 1,Paid,Yes,6500,3
+L085,2026-07-07,Study Abroad,Google Ads,Tier 2,Lead,No,0,
+L060,2026-07-08,Aspirations,Webinar,Tier 1,Counselling Call,No,0,
+L010,2026-07-09,Study Abroad,Referral,Tier 2,Lead,No,0,
+L011,2026-07-09,School Partnerships,School Event,Tier 2,Application Submitted,No,0,
+L081,2026-07-09,School Partnerships,Webinar,Tier 1,Counselling Call,No,0,
+L008,2026-07-10,Study Abroad,Webinar,Tier 2,Application Started,No,0,
+L032,2026-07-11,Study Abroad,School Event,Tier 1,Paid,Yes,112900,71
+L002,2026-07-12,Aspirations,School Event,Tier 1,Application Submitted,No,0,
+L069,2026-07-12,Study Abroad,Referral,Tier 3,Application Started,No,0,
+L019,2026-07-14,Aspirations,Webinar,Tier 2,Paid,Yes,4100,6
+L057,2026-07-14,Study Abroad,Google Ads,Tier 3,Lead,No,0,
+L078,2026-07-15,Aspirations,Referral,Tier 1,Paid,Yes,4100,3
+L030,2026-07-16,Aspirations,Instagram,Tier 3,Lead,No,0,
+L039,2026-07-16,Aspirations,School Event,Tier 2,Paid,Yes,7900,4
+L037,2026-07-17,Aspirations,Referral,Tier 1,Paid,Yes,8100,11
+L073,2026-07-18,Aspirations,Webinar,Tier 2,Paid,Yes,7500,13
+L108,2026-07-19,Aspirations,Instagram,Tier 3,Lead,No,0,
+L109,2026-07-19,Aspirations,Instagram,Tier 3,Counselling Call,No,0,
+L015,2026-07-20,School Partnerships,School Event,Tier 3,Paid,Yes,357800,68
+L038,2026-07-20,Aspirations,Referral,Tier 1,Paid,Yes,4000,5
+L031,2026-07-23,Study Abroad,Google Ads,Tier 2,Application Submitted,No,0,
+L107,2026-07-24,Aspirations,Referral,Tier 2,Lead,No,0,
+L120,2026-07-24,Study Abroad,Google Ads,Tier 3,Counselling Call,No,0,
+L005,2026-07-25,Aspirations,Referral,Tier 2,Paid,Yes,5000,13
+L103,2026-07-25,Study Abroad,Webinar,Tier 1,Paid,Yes,95100,43
+L080,2026-07-26,Study Abroad,Instagram,Tier 3,Lead,No,0,
+L055,2026-07-27,School Partnerships,Webinar,Tier 2,Paid,Yes,154500,77
+L024,2026-07-29,Study Abroad,Referral,Tier 1,Application Started,No,0,
+L046,2026-07-29,Aspirations,Google Ads,Tier 3,Lead,No,0,
+L119,2026-07-30,School Partnerships,Instagram,Tier 1,Paid,Yes,347400,100
+L036,2026-07-31,Aspirations,Google Ads,Tier 1,Lead,No,0,
+L070,2026-07-31,Aspirations,Instagram,Tier 3,Lead,No,0,
+L096,2026-08-01,Study Abroad,School Event,Tier 3,Lead,No,0,
+L050,2026-08-04,School Partnerships,Instagram,Tier 1,Paid,Yes,255600,78
+L083,2026-08-04,Aspirations,Google Ads,Tier 1,Application Submitted,No,0,
+L040,2026-08-05,School Partnerships,Instagram,Tier 1,Paid,Yes,373500,53
+L112,2026-08-05,Aspirations,Instagram,Tier 1,Application Started,No,0,
+L007,2026-08-08,Study Abroad,Google Ads,Tier 1,Counselling Call,No,0,
+L100,2026-08-08,Study Abroad,Instagram,Tier 1,Paid,Yes,90100,20
+L118,2026-08-08,Aspirations,Webinar,Tier 3,Counselling Call,No,0,
+L101,2026-08-10,Study Abroad,School Event,Tier 1,Counselling Call,No,0,
+L065,2026-08-11,Aspirations,Referral,Tier 1,Paid,Yes,4700,14
+L117,2026-08-13,Aspirations,Instagram,Tier 3,Application Started,No,0,
+L020,2026-08-14,Study Abroad,Google Ads,Tier 2,Paid,Yes,118300,50
+L028,2026-08-16,Study Abroad,Webinar,Tier 3,Application Started,No,0,
+L071,2026-08-18,Aspirations,School Event,Tier 2,Counselling Call,No,0,
+L093,2026-08-19,Aspirations,Webinar,Tier 3,Application Started,No,0,
+L044,2026-08-20,Study Abroad,Google Ads,Tier 1,Paid,Yes,95200,70
+L018,2026-08-21,Aspirations,Referral,Tier 1,Paid,Yes,8900,10
+L094,2026-08-24,Study Abroad,Instagram,Tier 1,Lead,No,0,
+L014,2026-08-27,School Partnerships,School Event,Tier 1,Paid,Yes,287600,98
+L074,2026-08-29,Aspirations,Referral,Tier 1,Paid,Yes,8900,10
+L116,2026-08-29,Study Abroad,Instagram,Tier 1,Counselling Call,No,0,
+L033,2026-08-30,Study Abroad,Referral,Tier 3,Application Started,No,0,
+L087,2026-08-30,Aspirations,Referral,Tier 1,Paid,Yes,7300,9
+L115,2026-08-30,Aspirations,Webinar,Tier 2,Application Started,No,0,
+L095,2026-09-01,School Partnerships,School Event,Tier 3,Application Started,No,0,
+L091,2026-09-02,Aspirations,Webinar,Tier 2,Counselling Call,No,0,
+L042,2026-09-03,Aspirations,Referral,Tier 3,Lead,No,0,
+L075,2026-09-03,Aspirations,School Event,Tier 1,Lead,No,0,
+L105,2026-09-03,Aspirations,Webinar,Tier 2,Application Submitted,No,0,
+L022,2026-09-06,Aspirations,Instagram,Tier 1,Counselling Call,No,0,
+L064,2026-09-06,Aspirations,Google Ads,Tier 1,Lead,No,0,
+L016,2026-09-07,Aspirations,Instagram,Tier 1,Application Started,No,0,
+L056,2026-09-09,Aspirations,Instagram,Tier 2,Lead,No,0,
+L004,2026-09-10,Aspirations,Instagram,Tier 2,Lead,No,0,
+L068,2026-09-10,School Partnerships,School Event,Tier 3,Paid,Yes,215900,103
+L090,2026-09-11,Aspirations,Webinar,Tier 1,Paid,Yes,7700,6
+L003,2026-09-12,Study Abroad,Referral,Tier 3,Paid,Yes,55000,46
+L051,2026-09-12,Aspirations,Referral,Tier 3,Application Submitted,No,0,
+L041,2026-09-16,Aspirations,Referral,Tier 3,Counselling Call,No,0,
+L013,2026-09-17,Aspirations,School Event,Tier 1,Paid,Yes,5200,9
+L084,2026-09-19,Aspirations,Instagram,Tier 3,Counselling Call,No,0,
+L099,2026-09-19,Study Abroad,Webinar,Tier 3,Counselling Call,No,0,
+L023,2026-09-21,School Partnerships,Referral,Tier 1,Paid,Yes,191800,73
+L045,2026-09-21,Aspirations,Google Ads,Tier 3,Lead,No,0,
+L072,2026-09-21,Aspirations,Instagram,Tier 2,Counselling Call,No,0,
+L086,2026-09-21,Aspirations,Referral,Tier 2,Lead,No,0,
+L017,2026-09-22,Study Abroad,Referral,Tier 3,Lead,No,0,
+L009,2026-09-24,Aspirations,School Event,Tier 1,Paid,Yes,5700,8
+L047,2026-09-24,Aspirations,School Event,Tier 1,Paid,Yes,5700,6
+L088,2026-09-24,Study Abroad,Webinar,Tier 2,Paid,Yes,112900,51
+L111,2026-09-24,School Partnerships,School Event,Tier 1,Application Started,No,0,
+L097,2026-09-26,Aspirations,Google Ads,Tier 2,Counselling Call,No,0,
+L027,2026-09-27,Study Abroad,School Event,Tier 1,Application Started,No,0,
+L061,2026-09-27,School Partnerships,Webinar,Tier 2,Paid,Yes,215800,87
+L114,2026-09-29,Study Abroad,School Event,Tier 1,Application Started,No,0,
+L067,2026-09-30,Study Abroad,Referral,Tier 2,Paid,Yes,55000,43
+L104,2026-09-30,Aspirations,Instagram,Tier 2,Counselling Call,No,0,
+L034,2026-10-01,Aspirations,Instagram,Tier 2,Lead,No,0,
+L079,2026-10-02,School Partnerships,School Event,Tier 1,Paid,Yes,150400,88
+L025,2026-10-03,Aspirations,Google Ads,Tier 3,Lead,No,0,
+L021,2026-10-04,Aspirations,Instagram,Tier 1,Application Started,No,0,
+L077,2026-10-04,Aspirations,Referral,Tier 1,Counselling Call,No,0,
+L082,2026-10-05,Study Abroad,Webinar,Tier 3,Application Submitted,No,0,
+L089,2026-10-06,Study Abroad,School Event,Tier 3,Paid,Yes,70600,25
+L106,2026-10-06,Aspirations,School Event,Tier 1,Lead,No,0,
+L113,2026-10-07,Study Abroad,Google Ads,Tier 1,Lead,No,0,
+L063,2026-10-08,Aspirations,Google Ads,Tier 1,Paid,Yes,4200,3
+L098,2026-10-08,Study Abroad,School Event,Tier 1,Application Submitted,No,0,
+L092,2026-10-10,Aspirations,Referral,Tier 2,Lead,No,0,
+L066,2026-10-12,School Partnerships,School Event,Tier 2,Paid,Yes,353200,47
+L053,2026-10-19,Aspirations,Google Ads,Tier 1,Application Started,No,0,
+L035,2026-10-20,Study Abroad,Google Ads,Tier 1,Counselling Call,No,0,
+L059,2026-10-21,School Partnerships,Webinar,Tier 1,Paid,Yes,163600,61
+L012,2026-10-22,Study Abroad,Webinar,Tier 2,Lead,No,0,
+L058,2026-10-22,Study Abroad,School Event,Tier 2,Application Started,No,0,
+L110,2026-10-22,Aspirations,School Event,Tier 3,Paid,Yes,5000,13
+L043,2026-10-23,Study Abroad,Webinar,Tier 3,Lead,No,0,
+L029,2026-10-24,Aspirations,School Event,Tier 2,Application Started,No,0,
+L049,2026-10-26,Study Abroad,Instagram,Tier 1,Lead,No,0,
+L076,2026-10-26,Aspirations,Webinar,Tier 1,Lead,No,0,
+L006,2026-10-27,Study Abroad,Webinar,Tier 2,Application Started,No,0,
