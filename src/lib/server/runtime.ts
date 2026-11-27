@@ -168,9 +168,11 @@ async function sessionFor(bot: Bot, conversationId: ConversationId): Promise<Ses
   await session.permissions.setForCategory({ category: "read", policy: "allow" });
   await session.permissions.setForCategory({ category: "edit", policy: "allow" });
   await session.permissions.setForCategory({ category: "other", policy: "allow" });
-  // Connected apps and MCP servers act on real accounts: ask first unless the bot has full access.
-  await session.permissions.setForCategory({ category: "mcp", policy: bot.approval === "full" ? "allow" : "ask" });
-  await session.permissions.setForCategory({ category: "execute", policy: bot.approval === "full" ? "allow" : "ask" });
+  // Connected apps and MCP servers act on real accounts.
+  // full → allow; ask → always ask; controlled → ask for mcp/execute (finer policy in permissions/levels.ts)
+  const externalPolicy = bot.approval === "full" ? "allow" : "ask";
+  await session.permissions.setForCategory({ category: "mcp", policy: externalPolicy });
+  await session.permissions.setForCategory({ category: "execute", policy: externalPolicy });
   state.sessions.set(k, session);
   return session;
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { MoreHorizontal, PanelLeft, Pin, Plug, Plus, Search, Settings, X } from "lucide-react";
+import { ListChecks, MoreHorizontal, PanelLeft, Pin, Plug, Plus, Search, Settings, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { api } from "@/lib/client/api";
 import { timeLabel } from "@/lib/client/format";
@@ -190,7 +190,10 @@ function SidebarFooter() {
         <span className="shrink-0 text-[10px] font-semibold tracking-[0.08em] text-faint uppercase">Powered by</span>
         <NebiusLogo height={14} className="shrink-0" />
       </a>
-      <IconButton label="Connections" onClick={() => setPanel({ kind: "connections" })} className="ml-auto">
+      <IconButton label="Workforce · tasks, agents, skills, schedules" onClick={() => setPanel({ kind: "workforce" })} className="ml-auto">
+        <ListChecks size={18} />
+      </IconButton>
+      <IconButton label="Connections" onClick={() => setPanel({ kind: "connections" })}>
         <Plug size={18} />
       </IconButton>
       <IconButton label={settingsHint} onClick={() => setPanel({ kind: "settings" })} className="relative">
@@ -257,6 +260,7 @@ export function Sidebar() {
               items={[
                 { label: "New bot", onClick: () => setPanel({ kind: "new-bot" }), icon: <Mascot color="#3b82f6" size={18} /> },
                 { label: "New room", onClick: () => setPanel({ kind: "new-room" }), icon: <RoomAvatar colors={["#22c55e", "#f59e0b"]} size={18} /> },
+                { label: "Workforce (NL agents, tasks…)", onClick: () => setPanel({ kind: "workforce" }), icon: <ListChecks size={18} /> },
               ]}
             />
           )}

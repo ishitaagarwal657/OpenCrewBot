@@ -1,6 +1,11 @@
 // Types shared by the server and the browser. Everything here is plain JSON.
 
-export type ApprovalMode = "ask" | "full";
+/** 3 permission levels (Assignment Module G).
+ *  - ask      = Ask First (every sensitive/external action needs approval)
+ *  - controlled = Controlled Access (pre-approved categories within limits)
+ *  - full     = Full Access (autonomous within non-destructive bounds)
+ *  Legacy "ask" / "full" values are preserved for existing bots. */
+export type ApprovalMode = "ask" | "controlled" | "full";
 
 export interface BotTools {
   /** Tavily search, extract and crawl. */

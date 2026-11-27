@@ -23,6 +23,12 @@ export function boot(): Promise<void> {
   g.__opencrewbotBoot ??= (async () => {
     await sweepInterrupted();
     await seed();
+    try {
+      const { startSchedulerWorker } = await import("./scheduler/worker");
+      startSchedulerWorker();
+    } catch (err) {
+      console.error("[opencrewbot] scheduler worker failed to start", err);
+    }
   })();
   return g.__opencrewbotBoot;
 }
@@ -46,12 +52,14 @@ const SEED_MARKER = join(DATA_DIR, ".seeded");
 async function seed() {
   if (existsSync(SEED_MARKER)) return;
   const tools = { webSearch: true, memory: true, codeMode: false, browser: false, askUser: true };
+
+  // ── Core 3 (original) ───────────────────────────────────────────────
   const scout = await createBot({
     name: "Scout",
     title: "Research",
     description: "Finds things out on the web and comes back with sourced answers.",
     instructions:
-      "Research before answering anything time-sensitive. Search, read the best two or three sources, then answer with the URLs you used. Say plainly when sources disagree or you couldn't verify something.",
+      "Research before answering anything time-sensitive. Search, read the best two or three sources, then answer with the URLs you used. Say plainly when sources disagree or you couldn't verify something. Skills: market_research, competitor_analysis.",
     emoji: "🔭",
     color: "#2f7df6",
     model: DEFAULT_MODEL,
@@ -64,7 +72,7 @@ async function seed() {
     title: "Writing",
     description: "Turns notes and research into clear posts, docs and emails.",
     instructions:
-      "Write in plain, specific language. Match the person's voice once you know it, and keep their style preferences in memory. Offer one tight draft, not three options.",
+      "Write in plain, specific language. Match the person's voice once you know it, and keep their style preferences in memory. Offer one tight draft, not three options. Skills: email_drafting, presentation_creation.",
     emoji: "✒️",
     color: "#e0663d",
     model: DEFAULT_MODEL,
@@ -74,17 +82,86 @@ async function seed() {
   });
   const atlas = await createBot({
     name: "Atlas",
-    title: "Planning",
-    description: "Breaks goals into steps, keeps track of decisions, and pulls in teammates.",
+    title: "Chief of Staff / Planning",
+    description: "Breaks goals into task plans, assigns work, consolidates results.",
     instructions:
-      "Turn vague goals into a short, ordered plan with owners. Keep decisions and open questions in memory. In rooms, hand research to @scout and drafting to @quill.",
+      "You are the Chief of Staff. For complex requests: (1) produce a short ordered task plan with owners and dependencies, (2) hand research to @scout, drafting to @quill, analysis to @cipher, code review to @forge, (3) consolidate final deliverables. Keep decisions in memory. Prefer parallel independent work.",
     emoji: "🧭",
     color: "#1f9d6b",
     model: DEFAULT_MODEL,
     tools,
     approval: "ask",
+    pinned: true,
+  });
+
+  // ── Extra agents (minimum ≥8) ───────────────────────────────────────
+  const cipher = await createBot({
+    name: "Cipher",
+    title: "Data Analysis",
+    description: "Analyses spreadsheets, finds bottlenecks, recommends actions.",
+    instructions:
+      "Profile data, compute metrics, find conversion bottlenecks and segment performance. State assumptions. Skills: data_analysis, financial_modelling.",
+    emoji: "📊",
+    color: "#7c5cff",
+    model: DEFAULT_MODEL,
+    tools: { ...tools, codeMode: true, webSearch: false },
+    approval: "controlled",
     pinned: false,
   });
+  const forge = await createBot({
+    name: "Forge",
+    title: "Engineering",
+    description: "Inspects repos, reviews code, proposes development plans.",
+    instructions:
+      "Inspect repositories carefully. Rank issues by severity. Never apply changes without approval. Skills: code_review.",
+    emoji: "⚒️",
+    color: "#c45c26",
+    model: DEFAULT_MODEL,
+    tools: { ...tools, codeMode: true },
+    approval: "ask",
+    pinned: false,
+  });
+  const reach = await createBot({
+    name: "Reach",
+    title: "Lead Generation",
+    description: "Finds and qualifies leads and partnership targets.",
+    instructions:
+      "Define ICP, search for matching orgs, tier the list with fit reasons. Skills: lead_generation, email_drafting.",
+    emoji: "🎯",
+    color: "#d4a017",
+    model: DEFAULT_MODEL,
+    tools,
+    approval: "ask",
+    pinned: false,
+  });
+  const pulse = await createBot({
+    name: "Pulse",
+    title: "Competitor Monitor",
+    description: "Tracks competitor moves and weekly briefings.",
+    instructions:
+      "Watch competitive landscape for material changes. Update comparison notes and produce short briefings with sources. Skills: competitor_analysis, market_research.",
+    emoji: "📡",
+    color: "#0d9488",
+    model: DEFAULT_MODEL,
+    tools: { ...tools, codeMode: true },
+    approval: "controlled",
+    pinned: false,
+  });
+  const muse = await createBot({
+    name: "Muse",
+    title: "Campaign Creative",
+    description: "Audience research, campaign concepts, content calendars.",
+    instructions:
+      "Research the audience, surface concerns, propose campaign concepts and a content calendar with sample drafts. Skills: market_research, presentation_creation, email_drafting.",
+    emoji: "🎨",
+    color: "#db2777",
+    model: DEFAULT_MODEL,
+    tools: { ...tools, webSearch: true },
+    approval: "ask",
+    pinned: false,
+  });
+
+  // ── Rooms (≥4) ──────────────────────────────────────────────────────
   await createRoom({
     name: "Studio",
     topic: "Content and launches",
@@ -94,7 +171,50 @@ async function seed() {
     responder: "auto",
     pinned: true,
   });
+  await createRoom({
+    name: "Market Intel",
+    topic: "Competitive research and opportunity scans",
+    emoji: "🔍",
+    memberIds: [atlas.id, scout.id, pulse.id, cipher.id],
+    leadId: atlas.id,
+    responder: "auto",
+    pinned: true,
+  });
+  await createRoom({
+    name: "Growth",
+    topic: "Campaigns, leads, and outreach",
+    emoji: "🚀",
+    memberIds: [atlas.id, muse.id, reach.id, quill.id],
+    leadId: atlas.id,
+    responder: "auto",
+    pinned: false,
+  });
+  await createRoom({
+    name: "Engineering",
+    topic: "Code review and development plans",
+    emoji: "🛠️",
+    memberIds: [atlas.id, forge.id, cipher.id],
+    leadId: forge.id,
+    responder: "lead",
+    pinned: false,
+  });
+
   writeFileSync(SEED_MARKER, new Date().toISOString());
+
+  // Project memory for MeetUniversity demos (Module E)
+  try {
+    const { writeMemory } = await import("./memory/extended-memory");
+    await writeMemory(
+      { dataDir: DATA_DIR },
+      "project",
+      "meetuniversity",
+      `# MeetUniversity project memory\n\n- Website: https://www.meetuniversity.com/\n- Lines: Aspirations (Class 11 career), Study Abroad, School Partnerships\n- Prefer evidence-backed findings with sources.\n- User prefers concise bullet reports unless asked otherwise.\n`,
+      "system",
+      "Seeded project context for demos",
+    );
+  } catch (err) {
+    console.error("[opencrewbot] project memory seed failed", err);
+  }
 }
 
 // ── bots ────────────────────────────────────────────────────────────────
@@ -131,6 +251,46 @@ export async function createBot(input: BotInput): Promise<Bot> {
   writeMemory(bot.id, `# ${bot.name}'s memory\n\n`);
   publish({ type: "bots-changed" });
   return bot;
+}
+
+/** Module B — create a bot from a natural-language description (no source edit). */
+export async function createBotFromDescription(description: string): Promise<Bot> {
+  const text = description?.trim();
+  if (!text) throw new InputError("Describe the agent you want to create.");
+  if (text.length > 2000) throw new InputError("Keep the description under 2,000 characters.");
+
+  const { heuristicAgentFromDescription } = await import("./factory/agent-factory");
+  const partial = heuristicAgentFromDescription(text, {
+    model: DEFAULT_MODEL,
+    approvalLevel: "ask_first",
+  });
+
+  const approvalMap = {
+    ask_first: "ask" as const,
+    controlled: "controlled" as const,
+    full_access: "full" as const,
+  };
+
+  const toolFlags = {
+    webSearch: partial.tools.includes("web_search"),
+    memory: partial.tools.includes("memory") || true,
+    codeMode: partial.tools.includes("code_mode"),
+    browser: partial.tools.includes("browser"),
+    askUser: true,
+  };
+
+  return createBot({
+    name: partial.name,
+    title: partial.role,
+    description: partial.role,
+    instructions: partial.instructions,
+    emoji: "🤖",
+    color: "#6366f1",
+    model: DEFAULT_MODEL,
+    tools: toolFlags,
+    approval: approvalMap[partial.approvalLevel] ?? "ask",
+    pinned: false,
+  });
 }
 
 export async function updateBot(id: string, patch: Partial<BotInput>): Promise<Bot> {

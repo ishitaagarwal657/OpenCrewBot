@@ -20,6 +20,36 @@ Run OpenCrewBot on your own machine. Bring a Nebius Token Factory key for the mo
 
 </div>
 
+
+---
+
+## OpenCrewBot 2.0 — Autonomous AI Workforce (extension layer)
+
+This fork extends the original OpenCrewBot into a workforce OS for the EDXSO Assignment 3 brief.
+
+**New capabilities:** Chief of Staff task plans · Task execution engine · Dynamic NL agent factory · 8 skills · Shared room/project memory · 3 permission levels · Scheduled workflows · Workforce UI panel · Multi-model routing helpers · Collaboration loop guards.
+
+| Doc | Path |
+|-----|------|
+| Feature audit | [docs/FEATURE_AUDIT.md](docs/FEATURE_AUDIT.md) |
+| Architecture | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) |
+| Live vs mocked | [docs/LIVE_VS_MOCKED.md](docs/LIVE_VS_MOCKED.md) |
+| MeetUniversity demos | [docs/DEMOS_MEETUNIVERSITY.md](docs/DEMOS_MEETUNIVERSITY.md) |
+| Submission checklist | [docs/SUBMISSION_CHECKLIST.md](docs/SUBMISSION_CHECKLIST.md) |
+| Known limitations | [docs/KNOWN_LIMITATIONS.md](docs/KNOWN_LIMITATIONS.md) |
+| Test evidence | [docs/TEST_EVIDENCE.md](docs/TEST_EVIDENCE.md) |
+
+```sh
+pnpm install && cp .env.example .env && pnpm dev
+# http://localhost:3000 — open the Workforce panel (list icon in the sidebar footer)
+node scripts/smoke-modules.mjs
+```
+
+Original MIT licence and Studio1 attribution are retained.
+
+---
+
+
 ---
 
 <div align="center">

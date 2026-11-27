@@ -65,4 +65,21 @@ export const api = {
     call<{ server: McpServer }>("/api/connections/mcp", { method: "POST", json: input }),
   removeMcpServer: (id: string) => call(`/api/connections/mcp/${id}`, { method: "DELETE" }),
   testMcpServer: (id: string) => call<{ tools: number }>(`/api/connections/mcp/${id}/test`, { method: "POST" }),
+
+  // ── OpenCrewBot 2.0 extensions ──────────────────────────────────────
+  createAgentFromDescription: (description: string) =>
+    call<{ bot: Bot }>("/api/agents/create", { method: "POST", json: { description } }),
+  listSkills: () => call<{ skills: Array<{ id: string; name: string; description: string; whenToUse: string }> }>("/api/skills"),
+  listTaskRuns: () => call<{ runs: unknown[] }>("/api/tasks"),
+  createTaskRun: (body: { instruction?: string; useExample?: boolean; plan?: unknown }) =>
+    call<{ run: unknown; tasks: unknown[] }>("/api/tasks", { method: "POST", json: body }),
+  getTaskRun: (id: string) => call<{ run: unknown; tasks: unknown[] }>(`/api/tasks/${id}`),
+  listWorkflows: () => call<{ workflows: unknown[] }>("/api/workflows"),
+  createWorkflow: (body: {
+    useExample?: boolean;
+    name?: string;
+    description?: string;
+    schedule?: "hourly" | "daily" | "weekly";
+    instruction?: string;
+  }) => call<{ workflow: unknown }>("/api/workflows", { method: "POST", json: body }),
 };
