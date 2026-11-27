@@ -160,7 +160,8 @@ All keys stay on the server. Without a Nebius key, bots run on a scripted mock m
 Use **Node.js 22.13 or newer** (developed on 24) and **pnpm**:
 
 ```sh
-git clone https://github.com/Studio1-OSS/OpenCrewBot.git
+git clone 
+https://github.com/ishitaagarwal657/OpenCrewBot.git
 cd OpenCrewBot
 pnpm install
 cp .env.example .env
